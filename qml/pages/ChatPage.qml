@@ -1569,6 +1569,8 @@ Page {
                                                                        "messageChatUpgradeTo",
                                                                        "messageCustomServiceAction",
                                                                        "messagePinMessage",
+                                                                       "messagePollOptionAdded",
+                                                                       "messagePollOptionDeleted",
                                                                        "messageScreenshotTaken",
                                                                        "messageSupergroupChatCreate",
                                                                        "messageUnsupported"]
