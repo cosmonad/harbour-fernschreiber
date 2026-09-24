@@ -619,6 +619,12 @@ Page {
 
     Connections {
         target: tdLibWrapper
+        onOkReceived: {
+            // Saved from the GIF picker or from the menu of a message
+            if (request === "addSavedAnimation") {
+                appNotification.show(qsTr("Added to GIFs"));
+            }
+        }
         onUserUpdated: {
             if ((isPrivateChat || isSecretChat) && chatPartnerInformation.id.toString() === userId ) {
                 chatPartnerInformation = userInformation;
@@ -1705,6 +1711,14 @@ Page {
                             Debug.log("Sticker picked: " + stickerId);
                             stickerManager.setNeedsReload(true);
                             tdLibWrapper.sendStickerMessage(chatInformation.id, stickerId, newMessageColumn.replyToMessageId);
+                            stickerPickerLoader.active = false;
+                            attachmentOptionsFlickable.isNeeded = false;
+                            newMessageInReplyToRow.inReplyToMessage = null;
+                            newMessageColumn.editMessageId = "0";
+                        }
+                        onAnimationPicked: {
+                            Debug.log("Animation picked: " + animation.animation.remote.id);
+                            tdLibWrapper.sendAnimationMessage(chatInformation.id, animation, newMessageColumn.replyToMessageId);
                             stickerPickerLoader.active = false;
                             attachmentOptionsFlickable.isNeeded = false;
                             newMessageInReplyToRow.inReplyToMessage = null;

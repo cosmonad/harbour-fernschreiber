@@ -309,6 +309,8 @@ TDLibReceiver::TDLibReceiver(void *tdLibClient, QObject *parent) : QThread(paren
     handlers.insert("updateRecentStickers", &TDLibReceiver::processUpdateRecentStickers);
     handlers.insert("updateFavoriteStickers", &TDLibReceiver::processUpdateFavoriteStickers);
     handlers.insert("stickers", &TDLibReceiver::processStickers);
+    handlers.insert("updateSavedAnimations", &TDLibReceiver::processUpdateSavedAnimations);
+    handlers.insert("animations", &TDLibReceiver::processAnimations);
     handlers.insert("updateInstalledStickerSets", &TDLibReceiver::processUpdateInstalledStickerSets);
     handlers.insert("stickerSets", &TDLibReceiver::processStickerSets);
     handlers.insert("stickerSet", &TDLibReceiver::processStickerSet);
@@ -741,6 +743,18 @@ void TDLibReceiver::processStickers(const QVariantMap &receivedInformation)
 {
     LOG("Received some stickers...");
     emit stickers(receivedInformation.value(_EXTRA).toString(), cleanupList(receivedInformation.value(STICKERS).toList()));
+}
+
+void TDLibReceiver::processUpdateSavedAnimations(const QVariantMap &receivedInformation)
+{
+    LOG("Saved animations updated");
+    emit savedAnimationsUpdated(receivedInformation.value("animation_ids").toList());
+}
+
+void TDLibReceiver::processAnimations(const QVariantMap &receivedInformation)
+{
+    LOG("Received some animations...");
+    emit animations(cleanupList(receivedInformation.value("animations").toList()));
 }
 
 void TDLibReceiver::processUpdateInstalledStickerSets(const QVariantMap &receivedInformation)

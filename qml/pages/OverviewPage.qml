@@ -93,6 +93,7 @@ Page {
             chatListModel.calculateUnreadState();
             tdLibWrapper.getRecentStickers();
             tdLibWrapper.getFavoriteStickers();
+            tdLibWrapper.getSavedAnimations();
             tdLibWrapper.getInstalledStickerSets();
             tdLibWrapper.getContacts();
             tdLibWrapper.getUserPrivacySettingRules(TelegramAPI.SettingAllowChatInvites);

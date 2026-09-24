@@ -166,6 +166,8 @@ void TDLibWrapper::initializeTDLibReceiver() {
     connect(this->tdLibReceiver, SIGNAL(recentStickersUpdated(QVariantList)), this, SIGNAL(recentStickersUpdated(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(favoriteStickersUpdated(QVariantList)), this, SIGNAL(favoriteStickersUpdated(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(stickers(QString, QVariantList)), this, SIGNAL(stickersReceived(QString, QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(savedAnimationsUpdated(QVariantList)), this, SIGNAL(savedAnimationsUpdated(QVariantList)));
+    connect(this->tdLibReceiver, SIGNAL(animations(QVariantList)), this, SIGNAL(animationsReceived(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(installedStickerSetsUpdated(QVariantList)), this, SIGNAL(installedStickerSetsUpdated(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(stickerSets(QVariantList)), this, SLOT(handleStickerSets(QVariantList)));
     connect(this->tdLibReceiver, SIGNAL(stickerSet(QVariantMap)), this, SIGNAL(stickerSetReceived(QVariantMap)));
@@ -685,6 +687,34 @@ void TDLibWrapper::sendStickerMessage(qlonglong chatId, const QString &fileId, q
     this->sendRequest(requestObject);
 }
 
+// An animation of TDLib, saved or found by the animation search bot, sent by
+// its remote file ID. Its dimensions and duration moved into inputAnimation
+// together with the file in TdLib 1.8.65, they sat next to it before.
+void TDLibWrapper::sendAnimationMessage(qlonglong chatId, const QVariantMap &animation, qlonglong replyToMessageId)
+{
+    const QString remoteFileId = animation.value("animation").toMap().value("remote").toMap().value(ID).toString();
+    LOG("Sending animation message" << chatId << remoteFileId << replyToMessageId);
+    QVariantMap requestObject(newSendMessageRequest(chatId, replyToMessageId));
+    QVariantMap inputMessageContent;
+    inputMessageContent.insert(_TYPE, "inputMessageAnimation");
+
+    const QVariant inputAnimation = newInputFile("inputAnimation", "animation", remoteFileId, VERSION_NUMBER(1,8,65), true);
+    const bool wrapped = (versionNumber >= VERSION_NUMBER(1,8,65));
+    QVariantMap container(wrapped ? inputAnimation.toMap() : inputMessageContent);
+    container.insert("duration", animation.value("duration"));
+    container.insert("width", animation.value("width"));
+    container.insert("height", animation.value("height"));
+    if (wrapped) {
+        inputMessageContent.insert("animation", container);
+    } else {
+        inputMessageContent = container;
+        inputMessageContent.insert("animation", inputAnimation);
+    }
+
+    requestObject.insert("input_message_content", inputMessageContent);
+    this->sendRequest(requestObject);
+}
+
 void TDLibWrapper::sendPollMessage(qlonglong chatId, const QString &question, const QVariantList &options, bool anonymous, int correctOption, bool multiple, const QString &explanation, qlonglong replyToMessageId)
 {
     LOG("Sending poll message" << chatId << question << replyToMessageId);
@@ -947,6 +977,40 @@ void TDLibWrapper::getFavoriteStickers()
     QVariantMap requestObject;
     requestObject.insert(_TYPE, "getFavoriteStickers");
     requestObject.insert(_EXTRA, "getFavoriteStickers");
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::getSavedAnimations()
+{
+    LOG("Retrieving saved animations");
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "getSavedAnimations");
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::addSavedAnimation(int fileId)
+{
+    LOG("Adding saved animation" << fileId);
+    QVariantMap inputFile;
+    inputFile.insert(_TYPE, "inputFileId");
+    inputFile.insert(ID, fileId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "addSavedAnimation");
+    requestObject.insert(_EXTRA, "addSavedAnimation");
+    requestObject.insert("animation", inputFile);
+    this->sendRequest(requestObject);
+}
+
+void TDLibWrapper::removeSavedAnimation(int fileId)
+{
+    LOG("Removing saved animation" << fileId);
+    QVariantMap inputFile;
+    inputFile.insert(_TYPE, "inputFileId");
+    inputFile.insert(ID, fileId);
+    QVariantMap requestObject;
+    requestObject.insert(_TYPE, "removeSavedAnimation");
+    requestObject.insert(_EXTRA, "removeSavedAnimation");
+    requestObject.insert("animation", inputFile);
     this->sendRequest(requestObject);
 }
 

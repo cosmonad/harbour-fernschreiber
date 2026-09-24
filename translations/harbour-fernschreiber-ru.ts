@@ -119,6 +119,44 @@
     </message>
 </context>
 <context>
+    <name>AnimationPicker</name>
+    <message>
+        <source>Search GIFs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No GIFs found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No saved GIFs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search for one above, or add one from a chat through its menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AnimationPickerItem</name>
+    <message>
+        <source>Send</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove from GIFs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Removing GIF</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add to GIFs</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>BackgroundProgressIndicator</name>
     <message>
         <source>%1 %</source>
@@ -660,6 +698,10 @@
             <numerusform>%Ln файла</numerusform>
             <numerusform>%Ln файлов</numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Added to GIFs</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1397,6 +1439,17 @@
         <source>via %1</source>
         <comment>message posted via bot user</comment>
         <translation>через %1</translation>
+    </message>
+</context>
+<context>
+    <name>MessageVideo</name>
+    <message>
+        <source>Remove from GIFs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add to GIFs</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2231,6 +2284,14 @@
     <message>
         <source>Sticker set successfully removed!</source>
         <translation>Набор стикеров успешно удалён!</translation>
+    </message>
+    <message>
+        <source>Stickers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GIFs</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

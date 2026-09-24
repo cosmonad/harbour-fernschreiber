@@ -35,6 +35,8 @@ public:
 
     Q_INVOKABLE QVariantList getRecentStickers();
     Q_INVOKABLE QVariantList getFavoriteStickers();
+    Q_INVOKABLE QVariantList getSavedAnimations();
+    Q_INVOKABLE bool isAnimationSaved(int fileId);
     Q_INVOKABLE QVariantList getInstalledStickerSets();
     Q_INVOKABLE QVariantMap getStickerSet(const QString &stickerSetId);
     Q_INVOKABLE bool hasStickerSet(const QString &stickerSetId);
@@ -46,12 +48,15 @@ signals:
     void stickerSetsReceived();
     void recentStickersChanged();
     void favoriteStickersChanged();
+    void savedAnimationsChanged();
 
 private slots:
 
     void handleRecentStickersUpdated(const QVariantList &stickerIds);
     void handleFavoriteStickersUpdated(const QVariantList &stickerIds);
     void handleStickersReceived(const QString &extra, const QVariantList &stickers);
+    void handleSavedAnimationsUpdated(const QVariantList &animationIds);
+    void handleAnimationsReceived(const QVariantList &animations);
     void handleInstalledStickerSetsUpdated(const QVariantList &stickerSetIds);
     void handleStickerSetsReceived(const QVariantList &stickerSets);
     void handleStickerSetReceived(const QVariantMap &stickerSet);
@@ -63,6 +68,8 @@ private:
     QVariantList recentStickers;
     QVariantList recentStickerIds;
     QVariantList favoriteStickers;
+    QVariantList savedAnimations;
+    QVariantList savedAnimationIds;
     QVariantList installedStickerSets;
     QVariantList installedStickerSetIds;
     QVariantMap stickers;

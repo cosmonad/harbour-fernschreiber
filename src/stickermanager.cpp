@@ -32,6 +32,8 @@ StickerManager::StickerManager(TDLibWrapper *tdLibWrapper, QObject *parent) : QO
     connect(this->tdLibWrapper, SIGNAL(recentStickersUpdated(QVariantList)), this, SLOT(handleRecentStickersUpdated(QVariantList)));
     connect(this->tdLibWrapper, SIGNAL(favoriteStickersUpdated(QVariantList)), this, SLOT(handleFavoriteStickersUpdated(QVariantList)));
     connect(this->tdLibWrapper, SIGNAL(stickersReceived(QString, QVariantList)), this, SLOT(handleStickersReceived(QString, QVariantList)));
+    connect(this->tdLibWrapper, SIGNAL(savedAnimationsUpdated(QVariantList)), this, SLOT(handleSavedAnimationsUpdated(QVariantList)));
+    connect(this->tdLibWrapper, SIGNAL(animationsReceived(QVariantList)), this, SLOT(handleAnimationsReceived(QVariantList)));
     connect(this->tdLibWrapper, SIGNAL(installedStickerSetsUpdated(QVariantList)), this, SLOT(handleInstalledStickerSetsUpdated(QVariantList)));
     connect(this->tdLibWrapper, SIGNAL(stickerSetsReceived(QVariantList)), this, SLOT(handleStickerSetsReceived(QVariantList)));
     connect(this->tdLibWrapper, SIGNAL(stickerSetReceived(QVariantMap)), this, SLOT(handleStickerSetReceived(QVariantMap)));
@@ -50,6 +52,16 @@ QVariantList StickerManager::getRecentStickers()
 QVariantList StickerManager::getFavoriteStickers()
 {
     return this->favoriteStickers;
+}
+
+QVariantList StickerManager::getSavedAnimations()
+{
+    return this->savedAnimations;
+}
+
+bool StickerManager::isAnimationSaved(int fileId)
+{
+    return this->savedAnimationIds.contains(fileId);
 }
 
 QVariantList StickerManager::getInstalledStickerSets()
@@ -93,6 +105,27 @@ void StickerManager::handleFavoriteStickersUpdated(const QVariantList &stickerId
     LOG("Favorite stickers updated...." << stickerIds);
     // The update only carries file IDs, the favorite stickers themselves need to be fetched
     tdLibWrapper->getFavoriteStickers();
+}
+
+void StickerManager::handleSavedAnimationsUpdated(const QVariantList &animationIds)
+{
+    LOG("Saved animations updated...." << animationIds);
+    this->savedAnimationIds = animationIds;
+    // Like with the favorite stickers, the update only carries file IDs
+    tdLibWrapper->getSavedAnimations();
+}
+
+void StickerManager::handleAnimationsReceived(const QVariantList &animations)
+{
+    LOG("Receiving saved animations...." << animations.size());
+    this->savedAnimations = animations;
+    // The update may not have come yet, the IDs are those of the list itself
+    this->savedAnimationIds.clear();
+    QListIterator<QVariant> animationsIterator(animations);
+    while (animationsIterator.hasNext()) {
+        this->savedAnimationIds.append(animationsIterator.next().toMap().value("animation").toMap().value("id").toInt());
+    }
+    emit savedAnimationsChanged();
 }
 
 void StickerManager::handleStickersReceived(const QString &extra, const QVariantList &stickers)

@@ -184,6 +184,7 @@ public:
     Q_INVOKABLE void sendVoiceNoteMessage(qlonglong chatId, const QString &filePath, const QString &message, int duration, const QString &waveform, qlonglong replyToMessageId = 0);
     Q_INVOKABLE void sendLocationMessage(qlonglong chatId, double latitude, double longitude, double horizontalAccuracy, qlonglong replyToMessageId = 0);
     Q_INVOKABLE void sendStickerMessage(qlonglong chatId, const QString &fileId, qlonglong replyToMessageId = 0);
+    Q_INVOKABLE void sendAnimationMessage(qlonglong chatId, const QVariantMap &animation, qlonglong replyToMessageId = 0);
     Q_INVOKABLE void sendPollMessage(qlonglong chatId, const QString &question, const QVariantList &options, bool anonymous, int correctOption, bool multiple, const QString &explanation, qlonglong replyToMessageId = 0);
     Q_INVOKABLE void forwardMessages(const QString &chatId, const QString &fromChatId, const QVariantList &messageIds, bool sendCopy, bool removeCaption);
     Q_INVOKABLE void getMessage(qlonglong chatId, qlonglong messageId);
@@ -200,6 +201,9 @@ public:
     Q_INVOKABLE void getMapThumbnailFile(const QString &chatId, double latitude, double longitude, int width, int height, const QString &extra);
     Q_INVOKABLE void getRecentStickers();
     Q_INVOKABLE void getFavoriteStickers();
+    Q_INVOKABLE void getSavedAnimations();
+    Q_INVOKABLE void addSavedAnimation(int fileId);
+    Q_INVOKABLE void removeSavedAnimation(int fileId);
     Q_INVOKABLE void getInstalledStickerSets();
     Q_INVOKABLE void getStickerSet(const QString &setId);
     Q_INVOKABLE void getSupergroupMembers(const QString &groupId, int limit, int offset);
@@ -317,6 +321,8 @@ signals:
     void recentStickersUpdated(const QVariantList &stickerIds);
     void favoriteStickersUpdated(const QVariantList &stickerIds);
     void stickersReceived(const QString &extra, const QVariantList &stickers);
+    void savedAnimationsUpdated(const QVariantList &animationIds);
+    void animationsReceived(const QVariantList &animations);
     void installedStickerSetsUpdated(const QVariantList &stickerSetIds);
     void stickerSetsReceived(const QVariantList &stickerSets);
     void stickerSetReceived(const QVariantMap &stickerSet);

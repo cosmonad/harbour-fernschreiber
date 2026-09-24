@@ -19,6 +19,7 @@
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 import QtMultimedia 5.6
+import WerkWolf.Fernschreiber 1.0
 import "../"
 import "../../js/functions.js" as Functions
 import "../../js/debug.js" as Debug
@@ -40,6 +41,33 @@ MessageContentBase {
     property bool onScreen: messageListItem ? messageListItem.page.status === PageStatus.Active : true;
     property string videoType : "video";
     property bool playRequested: false;
+
+    // Only MPEG-4 animations can be saved, which are all of those Telegram converted
+    readonly property bool isSavableAnimation: typeof rawMessage !== "undefined" && rawMessage.content['@type'] === "messageAnimation"
+                                               && videoData.mime_type === "video/mp4" && !(messageListItem && messageListItem.page.isSecretChat)
+    property bool isAnimationSaved: isSavableAnimation && stickerManager.isAnimationSaved(videoData.animation.id)
+
+    Connections {
+        target: isSavableAnimation ? stickerManager : null
+        onSavedAnimationsChanged: {
+            videoMessageComponent.isAnimationSaved = stickerManager.isAnimationSaved(videoData.animation.id);
+        }
+    }
+
+    // Counted by the context menu even when hidden, so only offered where it applies
+    readonly property var extraContextMenuItems: isSavableAnimation ? [ saveAnimationAction ] : []
+
+    NamedAction {
+        id: saveAnimationAction
+        name: videoMessageComponent.isAnimationSaved ? qsTr("Remove from GIFs") : qsTr("Add to GIFs")
+        action: function () {
+            if (videoMessageComponent.isAnimationSaved) {
+                tdLibWrapper.removeSavedAnimation(videoData.animation.id);
+            } else {
+                tdLibWrapper.addSavedAnimation(videoData.animation.id);
+            }
+        }
+    }
 
     height: videoMessageComponent.isVideoNote ? width : Functions.getVideoHeight(width, videoData)
 
