@@ -6,13 +6,13 @@ Release: 1
 # https://github.com/mer-tools/spectacle/blob/master/data/GROUPS
 Group: Qt/Qt
 URL: http://werkwolf.eu/
-License: LICENSE
+License: GPL-3.0-or-later
 # This must be generated before uploading a package to a remote build service.
 # Usually this line does not need to be modified.
 Sources:
 - '%{name}-%{version}.tar.bz2'
 Description: |
-  Fernschreiber is a Telegram client for Sailfish OS
+  Fernschreiber (German for teleprinter, teletypewriter, teletype or TTY) connects you with the Telegram network.
 Configure: none
 Builder: qmake5
 

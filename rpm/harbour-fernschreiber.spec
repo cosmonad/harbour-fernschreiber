@@ -15,7 +15,7 @@ Summary:    Fernschreiber is a Telegram client for Sailfish OS
 Version:    0.20
 Release:    1
 Group:      Qt/Qt
-License:    LICENSE
+License:    GPL-3.0-or-later
 URL:        http://werkwolf.eu/
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-fernschreiber.yaml
@@ -36,7 +36,7 @@ BuildRequires:  gperf
 BuildRequires:  desktop-file-utils
 
 %description
-Fernschreiber is a Telegram client for Sailfish OS
+Fernschreiber (German for teleprinter, teletypewriter, teletype or TTY) connects you with the Telegram network.
 
 
 %prep
