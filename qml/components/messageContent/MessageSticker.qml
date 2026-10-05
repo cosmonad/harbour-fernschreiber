@@ -32,6 +32,35 @@ MessageContentBase {
         animatedStickerLoader.item ? animatedStickerLoader.item.visible : false
     readonly property bool isOwnSticker : messageListItem ? messageListItem.isOwnMessage : overlayFlickable.isOwnMessage
     readonly property real aspectRatio: stickerData.width / stickerData.height
+    property bool isFavorite: isFavoriteSticker()
+
+    property list<NamedAction> extraContextMenuItems: [
+        NamedAction {
+            name: thisItem.isFavorite ? qsTr("Remove from favorites") : qsTr("Add to favorites")
+            action: function () {
+                if (thisItem.isFavorite) {
+                    tdLibWrapper.removeFavoriteSticker(stickerData.sticker.remote.id);
+                } else {
+                    tdLibWrapper.addFavoriteSticker(stickerData.sticker.remote.id);
+                }
+            }
+        }
+    ]
+
+    function isFavoriteSticker() {
+        var favoriteStickers = stickerManager.getFavoriteStickers();
+        for (var i = 0; i < favoriteStickers.length; i++) {
+            if (favoriteStickers[i].sticker.remote.id === stickerData.sticker.remote.id) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    Connections {
+        target: stickerManager
+        onFavoriteStickersChanged: thisItem.isFavorite = thisItem.isFavoriteSticker()
+    }
 
     implicitWidth: stickerData.width
     implicitHeight: stickerData.height
