@@ -839,6 +839,15 @@
 <context>
     <name>FernschreiberUtils</name>
     <message>
+        <source>sent a sticker</source>
+        <comment>myself</comment>
+        <translation>отправил(а) стикер</translation>
+    </message>
+    <message>
+        <source>sent a sticker</source>
+        <translation>отправил(а) стикер</translation>
+    </message>
+    <message>
         <source>sent a picture</source>
         <comment>myself</comment>
         <translation>отправил(а) картинку</translation>
@@ -2508,6 +2517,15 @@
     <message>
         <source>Document: %1</source>
         <translation>Документ: %1</translation>
+    </message>
+    <message>
+        <source>sent a sticker</source>
+        <comment>myself</comment>
+        <translation>отправил(а) стикер</translation>
+    </message>
+    <message>
+        <source>sent a sticker</source>
+        <translation>отправил(а) стикер</translation>
     </message>
     <message>
         <source>sent a picture</source>
