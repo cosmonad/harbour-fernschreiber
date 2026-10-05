@@ -98,9 +98,9 @@ function getMessageText(message, simple, currentUserId, ignoreEntities) {
         return simple ? (myself ? qsTr("sent a video note", "myself") : qsTr("sent a video note")) : "";
     case 'messageAnimation':
         if (message.content.caption.text !== "") {
-            return simple ? qsTr("Animation: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption, ignoreEntities)
+            return simple ? qsTr("GIF: %1").arg(message.content.caption.text) : enhanceMessageText(message.content.caption, ignoreEntities)
         } else {
-            return simple ? (myself ? qsTr("sent an animation", "myself") : qsTr("sent an animation")) : "";
+            return simple ? (myself ? qsTr("sent a GIF", "myself") : qsTr("sent a GIF")) : "";
         }
     case 'messageAudio':
         if (message.content.caption.text !== "") {

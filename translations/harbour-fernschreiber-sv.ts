@@ -850,13 +850,13 @@
         <translation>skickade en video</translation>
     </message>
     <message>
-        <source>sent an animation</source>
+        <source>sent a GIF</source>
         <comment>myself</comment>
-        <translation>skickade en animering</translation>
+        <translation>skickade en GIF</translation>
     </message>
     <message>
-        <source>sent an animation</source>
-        <translation>skickade en animering</translation>
+        <source>sent a GIF</source>
+        <translation>skickade en GIF</translation>
     </message>
     <message>
         <source>sent a voice note</source>
@@ -2488,8 +2488,8 @@
         <translation>Röstmeddelande: %1</translation>
     </message>
     <message>
-        <source>Animation: %1</source>
-        <translation>Animering: %1</translation>
+        <source>GIF: %1</source>
+        <translation>GIF: %1</translation>
     </message>
     <message>
         <source>Document: %1</source>
@@ -2513,8 +2513,8 @@
         <translation>skickade en video</translation>
     </message>
     <message>
-        <source>sent an animation</source>
-        <translation>skickade en animering</translation>
+        <source>sent a GIF</source>
+        <translation>skickade en GIF</translation>
     </message>
     <message>
         <source>sent an audio</source>
@@ -2567,9 +2567,9 @@
         <translation>skickade en video</translation>
     </message>
     <message>
-        <source>sent an animation</source>
+        <source>sent a GIF</source>
         <comment>myself</comment>
-        <translation>skickade en animering</translation>
+        <translation>skickade en GIF</translation>
     </message>
     <message>
         <source>sent an audio</source>

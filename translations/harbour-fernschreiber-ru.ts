@@ -866,13 +866,13 @@
         <translation>отправил(а) видео</translation>
     </message>
     <message>
-        <source>sent an animation</source>
+        <source>sent a GIF</source>
         <comment>myself</comment>
-        <translation>отправил(а) анимацию</translation>
+        <translation>отправил(а) GIF</translation>
     </message>
     <message>
-        <source>sent an animation</source>
-        <translation>отправил(а) анимацию</translation>
+        <source>sent a GIF</source>
+        <translation>отправил(а) GIF</translation>
     </message>
     <message>
         <source>sent a voice note</source>
@@ -2522,8 +2522,8 @@
         <translation>Голосовая заметка: %1</translation>
     </message>
     <message>
-        <source>Animation: %1</source>
-        <translation>Анимация: %1</translation>
+        <source>GIF: %1</source>
+        <translation>GIF: %1</translation>
     </message>
     <message>
         <source>Document: %1</source>
@@ -2547,8 +2547,8 @@
         <translation>отправил(а) видео</translation>
     </message>
     <message>
-        <source>sent an animation</source>
-        <translation>отправил(а) анимацию</translation>
+        <source>sent a GIF</source>
+        <translation>отправил(а) GIF</translation>
     </message>
     <message>
         <source>sent an audio</source>
@@ -2601,9 +2601,9 @@
         <translation>отправил(а) видео</translation>
     </message>
     <message>
-        <source>sent an animation</source>
+        <source>sent a GIF</source>
         <comment>myself</comment>
-        <translation>отправил(а) анимацию</translation>
+        <translation>отправил(а) GIF</translation>
     </message>
     <message>
         <source>sent an audio</source>
