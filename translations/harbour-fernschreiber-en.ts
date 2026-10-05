@@ -843,13 +843,13 @@ messages</numerusform>
         <translation>sent a video</translation>
     </message>
     <message>
-        <source>sent an animation</source>
+        <source>sent a GIF</source>
         <comment>myself</comment>
-        <translation>sent an animation</translation>
+        <translation>sent a GIF</translation>
     </message>
     <message>
-        <source>sent an animation</source>
-        <translation>sent an animation</translation>
+        <source>sent a GIF</source>
+        <translation>sent a GIF</translation>
     </message>
     <message>
         <source>sent a voice note</source>
@@ -2470,8 +2470,8 @@ messages</numerusform>
         <translation>Voice Note: %1</translation>
     </message>
     <message>
-        <source>Animation: %1</source>
-        <translation>Animation: %1</translation>
+        <source>GIF: %1</source>
+        <translation>GIF: %1</translation>
     </message>
     <message>
         <source>Document: %1</source>
@@ -2486,8 +2486,8 @@ messages</numerusform>
         <translation>sent a video</translation>
     </message>
     <message>
-        <source>sent an animation</source>
-        <translation>sent an animation</translation>
+        <source>sent a GIF</source>
+        <translation>sent a GIF</translation>
     </message>
     <message>
         <source>sent an audio</source>
@@ -2540,9 +2540,9 @@ messages</numerusform>
         <translation>sent a video</translation>
     </message>
     <message>
-        <source>sent an animation</source>
+        <source>sent a GIF</source>
         <comment>myself</comment>
-        <translation>sent an animation</translation>
+        <translation>sent a GIF</translation>
     </message>
     <message>
         <source>sent an audio</source>

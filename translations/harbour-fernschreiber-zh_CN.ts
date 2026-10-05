@@ -829,13 +829,13 @@
         <translation>发送视频</translation>
     </message>
     <message>
-        <source>sent an animation</source>
+        <source>sent a GIF</source>
         <comment>myself</comment>
-        <translation>发送动画</translation>
+        <translation>发送GIF</translation>
     </message>
     <message>
-        <source>sent an animation</source>
-        <translation>发送动画</translation>
+        <source>sent a GIF</source>
+        <translation>发送GIF</translation>
     </message>
     <message>
         <source>sent a voice note</source>
@@ -2438,8 +2438,8 @@
         <translation>语音: %1</translation>
     </message>
     <message>
-        <source>Animation: %1</source>
-        <translation>动画: %1</translation>
+        <source>GIF: %1</source>
+        <translation>GIF: %1</translation>
     </message>
     <message>
         <source>Document: %1</source>
@@ -2454,8 +2454,8 @@
         <translation>发送视频</translation>
     </message>
     <message>
-        <source>sent an animation</source>
-        <translation>发送动画</translation>
+        <source>sent a GIF</source>
+        <translation>发送GIF</translation>
     </message>
     <message>
         <source>sent an audio</source>
@@ -2508,9 +2508,9 @@
         <translation>发送视频</translation>
     </message>
     <message>
-        <source>sent an animation</source>
+        <source>sent a GIF</source>
         <comment>myself</comment>
-        <translation>发送动画</translation>
+        <translation>发送GIF</translation>
     </message>
     <message>
         <source>sent an audio</source>

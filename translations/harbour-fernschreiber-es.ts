@@ -841,13 +841,13 @@
         <translation>envió un video</translation>
     </message>
     <message>
-        <source>sent an animation</source>
+        <source>sent a GIF</source>
         <comment>myself</comment>
-        <translation>envió una animación</translation>
+        <translation>envió un GIF</translation>
     </message>
     <message>
-        <source>sent an animation</source>
-        <translation>envió una animación</translation>
+        <source>sent a GIF</source>
+        <translation>envió un GIF</translation>
     </message>
     <message>
         <source>sent a voice note</source>
@@ -2468,8 +2468,8 @@
         <translation>Nota de voz: %1</translation>
     </message>
     <message>
-        <source>Animation: %1</source>
-        <translation>Animación: %1</translation>
+        <source>GIF: %1</source>
+        <translation>GIF: %1</translation>
     </message>
     <message>
         <source>Document: %1</source>
@@ -2484,8 +2484,8 @@
         <translation>envió video</translation>
     </message>
     <message>
-        <source>sent an animation</source>
-        <translation>envió animación</translation>
+        <source>sent a GIF</source>
+        <translation>envió un GIF</translation>
     </message>
     <message>
         <source>sent an audio</source>
@@ -2538,9 +2538,9 @@
         <translation>envié video</translation>
     </message>
     <message>
-        <source>sent an animation</source>
+        <source>sent a GIF</source>
         <comment>myself</comment>
-        <translation>envió animación</translation>
+        <translation>envió un GIF</translation>
     </message>
     <message>
         <source>sent an audio</source>
