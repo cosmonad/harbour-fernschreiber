@@ -1950,8 +1950,13 @@ Page {
                                 visible: chatPage.hasSendPrivilege("can_send_documents")
                                 icon.source: "image://theme/icon-m-document"
                                 onClicked: {
+                                    // Files are accepted in the directory dialogs pushed on top of the picker,
+                                    // which only pop themselves unless given a destination. Like Sailfish's own
+                                    // MultiContentPickerDialog, pass it via the (private) masked accept destination.
                                     var picker = pageStack.push("Sailfish.Pickers.MultiFilePickerDialog", {
-                                        allowedOrientations: chatPage.allowedOrientations
+                                        allowedOrientations: chatPage.allowedOrientations,
+                                        acceptDestinationAction: PageStackAction.Pop,
+                                        _maskedAcceptDestination: chatPage
                                     })
                                     picker.accepted.connect(function(){
                                         attachmentOptionsFlickable.isNeeded = false;
